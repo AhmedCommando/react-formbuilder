@@ -1,10 +1,23 @@
 import React from 'react'
 
-import { ExampleComponent } from 'react-formbuilder'
+import { FormBuilder } from 'react-formbuilder'
 import 'react-formbuilder/dist/index.css'
 
 const App = () => {
-  return <ExampleComponent text="Create React Library Example 😄" />
+  const formRules = [
+    {
+        type: 'text',
+        name: 'userName',
+        placeholder: 'Your name',
+        errorMessage: 'This field is required. Min is 4 characteres!',
+        validationRules: {
+            minLength: 4,
+            isRequired: true
+        }
+    }
+  ]
+
+  return <FormBuilder formRules={formRules} />
 }
 
 export default App

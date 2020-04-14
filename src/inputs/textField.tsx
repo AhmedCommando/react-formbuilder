@@ -8,7 +8,7 @@ interface NameValueInterface {
   value: string
 }
 
-export const TextField = ({
+const TextField = ({
   type,
   name,
   placeholder,
@@ -79,13 +79,15 @@ export const TextField = ({
         return (
           <textarea
             name={name}
-            cols="30"
-            rows="7"
+            cols={30}
+            rows={7}
             className={className}
             onChange={({ target: { name, value } }) => publishEvent({ name, value })}
             onBlur={({ target: { name, value } }) => publishEvent({ name, value })}
             placeholder={placeholder}></textarea>
         )
+      default:
+        return
     }
   }
 
@@ -96,3 +98,6 @@ export const TextField = ({
     </div>
   )
 }
+
+
+export default TextField
