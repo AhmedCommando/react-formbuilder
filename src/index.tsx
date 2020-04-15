@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import { FormRulesInterface } from './FormRulesInterface'
-import { TextField } from './inputs'
+import { TextField, CheckBoxField } from './inputs'
 
 
 export const FormBuilder = (props: { [formRules: string]: FormRulesInterface[] }) => {
@@ -9,7 +9,7 @@ export const FormBuilder = (props: { [formRules: string]: FormRulesInterface[] }
   const [values, setValues] = useState({})
 
   useEffect(() => {
-    console.error(values)
+    console.error('===>', values)
   }, [values]);
 
 
@@ -39,7 +39,21 @@ export const FormBuilder = (props: { [formRules: string]: FormRulesInterface[] }
       case 'email':
       case 'textArea':
         return (
-          <TextField key={index}
+          <TextField
+            key={index}
+            type={type}
+            name={name}
+            placeholder={placeholder}
+            errorMessage={errorMessage}
+            options={options || {}}
+            validationRules={validationRules}
+            className={className}
+            setValue={(name, value) => setValues({ ...values, [name]: value })} />
+        )
+      case 'checkbox':
+        return (
+          <CheckBoxField
+            key={index}
             type={type}
             name={name}
             placeholder={placeholder}

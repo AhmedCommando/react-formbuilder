@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { FormRulesInterface } from '../FormRulesInterface'
 import { getInputStateStyle, validate } from '../helpers'
 
-interface NameValueInterface {
+interface InputEventInterface {
   name: string
   value: string
 }
@@ -40,18 +40,17 @@ const TextField = ({
 
 
   const valueHandler = (name: string, value: string) => {
-    console.error('value', value)
     const { isValid, error } = validate(value, errorMessage, validationRules)
-    setValue(name, value)
     if (isValid) {
       setError('')
+      setValue(name, value)
       return
     }
 
     setError(error)
   }
 
-  const publishEvent = ({ name, value}: NameValueInterface) => {
+  const publishEvent = ({ name, value }: InputEventInterface) => {
     if (!options || !options.debounce || !value.length) {
       valueHandler(name, value)
       return
