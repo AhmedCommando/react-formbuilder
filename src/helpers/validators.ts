@@ -1,5 +1,10 @@
-const validate = (value: string, error: string, rules: any) => {
+import { ValidationRulesInterface } from './../FormRulesInterface';
+const validate = (value: string | boolean, error: string, rules: any) => {
   let isValid = true;
+
+  if (typeof value === 'boolean') {
+    return validateBooleanType(value, error, rules)
+  }
 
   for (const rule in rules) {
       switch (rule) {
@@ -14,6 +19,20 @@ const validate = (value: string, error: string, rules: any) => {
   return {isValid, error};
 }
 
+const validateBooleanType = (value: boolean, error: string, rules: ValidationRulesInterface) => {
+  let isValid = true
+
+  for (const rule in rules) {
+    switch (rule) {
+        case 'isRequired': isValid = isValid && value; break;
+        default: isValid = true;
+    }
+  }
+
+  return {isValid, error}
+}
+
+
 
 /**
 * minLength Val
@@ -26,7 +45,7 @@ const minLengthValidator = (value: string, minLength: number) => {
 }
 
 /**
-* Check to confirm that feild is required
+* Check to confirm that field is required
 *
 * @param  value
 * @return

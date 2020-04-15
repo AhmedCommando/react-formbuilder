@@ -1,5 +1,5 @@
 interface ValueEventInterface {
-  (name: string, value: string): void;
+  (name: string, value: string | boolean): void;
 }
 
 export interface ValidationRulesInterface {

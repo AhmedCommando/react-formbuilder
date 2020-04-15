@@ -34,6 +34,18 @@ const App = () => {
       }
     },
     {
+      type: 'checkbox',
+      name: 'checkbox',
+      className: 'form-control',
+      errorMessage: 'This field is required!',
+      validationRules: {
+        // isRequired: true,
+      },
+      options: {
+        debounce: 500
+      }
+    },
+    {
       type: 'textArea',
       name: 'description',
       placeholder: 'Your Message',
