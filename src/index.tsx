@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import { FormRulesInterface } from './FormRulesInterface'
-import { TextField, CheckBoxField } from './inputs'
+import { TextField, CheckBoxField, LabelInput } from './inputs'
 
 
 export const FormBuilder = (props: { [formRules: string]: FormRulesInterface[] }) => {
@@ -33,7 +33,7 @@ export const FormBuilder = (props: { [formRules: string]: FormRulesInterface[] }
     }
   }
 
-  const getInputType = ({ type, name, placeholder, errorMessage, options, validationRules, className }: FormRulesInterface, index: number) => {
+  const getInputType = ({ type, name, placeholder, htmlFor, errorMessage, options, validationRules, className }: FormRulesInterface, index: number) => {
     switch (type) {
       case 'text':
       case 'email':
@@ -63,6 +63,7 @@ export const FormBuilder = (props: { [formRules: string]: FormRulesInterface[] }
             className={className}
             setValue={(name, value) => setValues({ ...values, [name]: value })} />
         )
+      case 'label': return (<LabelInput key={index} htmlFor={htmlFor} className={className} placeholder={placeholder}/>)
       default:
         return (<h1>Not implemented yet!</h1>)
     }

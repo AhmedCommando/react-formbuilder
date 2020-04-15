@@ -22,5 +22,6 @@ export interface FormRulesInterface {
   className: string,
   options: FormRulesOptionsInterface,
   validationRules ?: ValidationRulesInterface,
-  setValue: ValueEventInterface;
+  htmlFor?: string
+  setValue?: ValueEventInterface;
 }
