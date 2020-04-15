@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import { FormRulesInterface } from './FormRulesInterface'
-import { TextField, CheckBoxField } from './inputs'
+import { TextField, CheckBoxField, RadioOption } from './inputs'
 
 
 export const FormBuilder = (props: { [formRules: string]: FormRulesInterface[] }) => {
@@ -63,6 +63,12 @@ export const FormBuilder = (props: { [formRules: string]: FormRulesInterface[] }
             className={className}
             setValue={(name, value) => setValues({ ...values, [name]: value })} />
         )
+
+      case 'radioOption': {
+        return (
+
+        )
+      }
       default:
         return (<h1>Not implemented yet!</h1>)
     }

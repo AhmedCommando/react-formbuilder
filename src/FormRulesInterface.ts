@@ -20,7 +20,8 @@ export interface FormRulesInterface {
   placeholder: string
   errorMessage: string,
   className: string,
-  options: FormRulesOptionsInterface,
-  validationRules ?: ValidationRulesInterface,
-  setValue: ValueEventInterface;
+  options?: FormRulesOptionsInterface,
+  validationRules?: ValidationRulesInterface,
+  group?: string[],
+  setValue: ValueEventInterface
 }

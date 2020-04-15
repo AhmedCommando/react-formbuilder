@@ -58,6 +58,16 @@ const App = () => {
       options: {
         debounce: 500
       }
+    },
+    {
+      type: 'radioOption',
+      name: 'gender',
+      className: 'form-control',
+      errorMessage: '',
+      group: ['Male', 'Female', 'Other'],
+      validationRules: {
+        isRequired: true
+      }
     }
   ];
 
