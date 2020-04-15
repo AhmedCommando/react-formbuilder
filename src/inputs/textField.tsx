@@ -23,7 +23,6 @@ const TextField = ({
   const [debounce, setDebounce] = useState(500)
   const [timer, setTimer] = useState<NodeJS.Timer | undefined>();
 
-
   useEffect(() => {
     if (timer) {
       clearTimeout(timer);
@@ -32,6 +31,7 @@ const TextField = ({
     const { name, value } = content
     setTimer(setTimeout(() => {
       if (name && value) {
+        console.error('houni')
         valueHandler(name, value);
       }
     }, debounce));
@@ -40,10 +40,11 @@ const TextField = ({
 
 
   const valueHandler = (name: string, value: string) => {
+    console.error('value', value)
     const { isValid, error } = validate(value, errorMessage, validationRules)
+    setValue(name, value)
     if (isValid) {
       setError('')
-      setValue(name, value)
       return
     }
 
@@ -51,13 +52,13 @@ const TextField = ({
   }
 
   const publishEvent = ({ name, value}: NameValueInterface) => {
-    if (options && options.debounce) {
-      setDebounce(options.debounce)
-      setContent({ name, value })
+    if (!options || !options.debounce || !value.length) {
+      valueHandler(name, value)
       return
     }
 
-    valueHandler(content.name, content.value);
+    setDebounce(options.debounce)
+    setContent({ name, value })
   }
 
   const getInputField = () => {

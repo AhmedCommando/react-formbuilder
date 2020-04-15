@@ -13,9 +13,13 @@ const App = () => {
         validationRules: {
             minLength: 4,
             isRequired: true
+        },
+        options: {
+          salam: 'ahmed',
+          debounce: 500
         }
     }
-  ]
+  ];
 
   return <FormBuilder formRules={formRules} />
 }
