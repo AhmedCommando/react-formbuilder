@@ -18,10 +18,10 @@ export interface FormRulesInterface {
   type: string
   name: string
   placeholder: string
-  errorMessage: string,
+  errorMessage?: string,
   className: string,
   options?: FormRulesOptionsInterface,
-  validationRules?: ValidationRulesInterface,
-  group?: string[],
-  setValue: ValueEventInterface
+  validationRules ?: ValidationRulesInterface,
+  htmlFor?: string
+  setValue?: ValueEventInterface;
 }

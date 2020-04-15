@@ -6,6 +6,11 @@ import 'react-formbuilder/dist/index.css'
 const App = () => {
   const formRules = [
     {
+      type: 'label',
+      htmlFor: 'labelTest',
+      placeholder: 'Label Test'
+    },
+    {
       type: 'text',
       name: 'userName',
       placeholder: 'Your Name',
