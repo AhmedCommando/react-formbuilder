@@ -66,7 +66,17 @@ export const FormBuilder = (props: { [formRules: string]: FormRulesInterface[] }
 
       case 'radioOption': {
         return (
-
+          <RadioOption
+            key={index}
+            type={type}
+            name={name}
+            placeholder={placeholder}
+            errorMessage={errorMessage}
+            options={options || {}}
+            validationRules={validationRules}
+            className={className}
+            setValue={(name, value) => setValues({ ...values, [name]: value })}
+          />
         )
       }
       default:
