@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import { FormRulesInterface } from './FormRulesInterface'
-import { TextField, CheckBoxField, LabelInput } from './inputs'
+import { TextField, CheckBoxField, RadioOption, LabelInput } from './inputs'
 
 
 export const FormBuilder = (props: { [formRules: string]: FormRulesInterface[] }) => {
@@ -63,6 +63,22 @@ export const FormBuilder = (props: { [formRules: string]: FormRulesInterface[] }
             className={className}
             setValue={(name, value) => setValues({ ...values, [name]: value })} />
         )
+
+      case 'radioOption': {
+        return (
+          <RadioOption
+            key={index}
+            type={type}
+            name={name}
+            placeholder={placeholder}
+            errorMessage={errorMessage}
+            options={options || {}}
+            validationRules={validationRules}
+            className={className}
+            setValue={(name, value) => setValues({ ...values, [name]: value })}
+          />
+        )
+      }
       case 'label': return (<LabelInput key={index} htmlFor={htmlFor} className={className} placeholder={placeholder}/>)
       default:
         return (<h1>Not implemented yet!</h1>)

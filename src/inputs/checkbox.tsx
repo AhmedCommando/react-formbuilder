@@ -19,26 +19,15 @@ export const CheckBoxField = ({
 }: FormRulesInterface) => {
   const [error, setError] = useState('')
 
-  const valueHandler = (name: string, value: boolean) => {
-    const { isValid, error } = validate(value, errorMessage, validationRules)
+  const valueHandler = ({ name, checked }: InputEventInterface) => {
+    const { isValid, error } = validate(checked, errorMessage, validationRules)
     if (isValid) {
       setError('')
-      setValue(name, value)
+      setValue(name, checked)
       return
     }
 
     setError(error)
-  }
-
-  const publishEvent = ({ name, checked }: InputEventInterface) => {
-    valueHandler(name, checked)
-
-
-    /* setContent((prev) => {
-      console.log('checkboxxx', { ...prev, name, checked });
-
-      return ({ ...prev, name, checked })
-    }) */
   }
 
   return (
@@ -48,7 +37,7 @@ export const CheckBoxField = ({
         type={type}
         className={className}
         name={name}
-        onChange={({ target: { name, checked } }) => publishEvent({ name, checked })}
+        onChange={({ target: { name, checked } }) => valueHandler({ name, checked })}
       />
     </div>
   )
