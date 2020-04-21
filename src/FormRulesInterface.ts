@@ -1,5 +1,5 @@
 interface ValueEventInterface {
-  (name: string, value: string): void;
+  (name: string, value: string | boolean): void;
 }
 
 export interface ValidationRulesInterface {
@@ -14,13 +14,24 @@ export interface FormRulesOptionsInterface {
   debounce ?: number
 }
 
+export interface RadioGroupInterface {
+  value: string
+  label: string
+  className?: string
+  style?: {}
+}
+
 export interface FormRulesInterface {
   type: string
   name: string
   placeholder: string
-  errorMessage: string,
   className: string,
-  options: FormRulesOptionsInterface,
+
+  errorMessage?: string,
+  options?: FormRulesOptionsInterface,
   validationRules ?: ValidationRulesInterface,
-  setValue: ValueEventInterface;
+  htmlFor?: string
+  group?: RadioGroupInterface[]
+
+  setValue?: ValueEventInterface;
 }

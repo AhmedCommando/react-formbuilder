@@ -1,5 +1,11 @@
 import TextField from './textField'
+import CheckBoxField from './checkbox'
+import RadioOption from './radioOption'
+import LabelInput from './labelField'
 
 export {
-  TextField
+  TextField,
+  CheckBoxField,
+  RadioOption,
+  LabelInput
 }
